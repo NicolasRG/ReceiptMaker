@@ -1,6 +1,7 @@
-from tkinter import Tk, Label, Button, LEFT, Frame, X, Y, BOTTOM, BOTH
-from inputs import InputBox
+from tkinter import Tk, Label, Button, LEFT, Frame, X, Y, BOTTOM, BOTH, Canvas, Scrollbar
+from ui_Components import inputs, scroll_frame, item_desc
 from data_format import informationStruct
+
 
 class GUI:
 
@@ -24,8 +25,20 @@ class GUI:
         self.item_title = Frame(self.contents, bg=ITEM_TITLE_COLOR)
         self.config_item_title()
 
-        # add frame that can be dynamic :)
+        # Add scrollable canvas to put items in
+        self.scroll_frame = scroll_frame.scrollFrame(self.contents)
 
+        # add frame that can be dynamic generated
+        self.items = informationStruct.InformationStruct()
+
+        # for test purposes
+        self.items.addItem(informationStruct.Item("name", 123, 1))
+        self.items.addItem(informationStruct.Item("name", 123, 1))
+        self.items.addItem(informationStruct.Item("name", 123, 1))
+        self.items.addItem(informationStruct.Item("name", 123, 1))
+        self.render_Items()
+        #
+        self.scroll_frame.place(relx=0.005, rely=0.08, relwidth=.990, relheight=.82)
 
 
     def config_header(self):
@@ -57,15 +70,13 @@ class GUI:
         PADDINGX = .005
         PADDINGY = .005
 
-
-
         self.item_title.place(relx=PADDINGX, rely=PADDINGY, relheight=HEIGHT, relwidth=WIDTH)
-        #add the confugiration for the title
+        # add the configuration for the title
 
         ITEM_PADDINGX = .005
         ITEM_PADDINGY = .05
         ITEM_HEIGHT = .9
-        LARGE_WIDTH  = .60
+        LARGE_WIDTH = .60
         SMALL_WIDTH = .19
         TEXT = "Item No/ Item Name"
 
@@ -73,12 +84,21 @@ class GUI:
         item_name.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX, relwidth=LARGE_WIDTH, relheight=ITEM_HEIGHT)
 
         item_quantity = Label(self.item_title, text="Quantity")
-        item_quantity.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX+.605 , relwidth=SMALL_WIDTH, relheight=ITEM_HEIGHT)
+        item_quantity.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX + .605, relwidth=SMALL_WIDTH, relheight=ITEM_HEIGHT)
 
         item_cost = Label(self.item_title, text="Cost")
-        item_cost.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX+.605+SMALL_WIDTH+ITEM_PADDINGX, relwidth=SMALL_WIDTH, relheight=ITEM_HEIGHT)
+        item_cost.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX + .605 + SMALL_WIDTH + ITEM_PADDINGX,
+                        relwidth=SMALL_WIDTH, relheight=ITEM_HEIGHT)
 
+    def render_Items(self):
+        for child in self.scroll_frame.mailbox_frame.winfo_children():
+            child.destroy()
 
+        for index, item in enumerate(self.items.get_items()):
+            item = item_desc.Item_Desc(self.scroll_frame.mailbox_frame, item)
+            rely = index*.1 + .01
+            print(rely)
+            item.addToView(rely=rely)
 
 
 
