@@ -1,4 +1,4 @@
-from tkinter import Frame, Scrollbar, Canvas, RIGHT, LEFT,Y, X, BOTH, NW
+from tkinter import Frame, Scrollbar, Canvas, RIGHT, LEFT, Y, X, BOTH, NW
 
 
 class scrollFrame(Frame):
@@ -24,15 +24,27 @@ class scrollFrame(Frame):
 
         self.mailbox_frame.bind("<Configure>", self.OnFrameConfig)
         self.canvas.bind('<Configure>', self.FrameWidthAndHeight)
-        self.items = []
+        self.inner_height = 1
+        self.base_height = 0
 
     def OnFrameConfig(self, event):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
     def FrameWidthAndHeight(self, event):
         canvas_width = event.width
+        self.base_height = event.height
         self.canvas.itemconfig(self.canvas_frame, width=canvas_width)
-        self.canvas.itemconfig(self.canvas_frame, height=event.height)
+
+        if self.inner_height > self.base_height :
+            self.canvas.itemconfig(self.canvas_frame, height=self.inner_height)
+        else:
+            self.canvas.itemconfig(self.canvas_frame, height=self.base_height)
+
+    def set_inner_height(self, height):
+        if height > self.base_height:
+            self.inner_height = height
+            self.canvas.itemconfig(self.canvas_frame,
+                                   height=self.inner_height)
 
     def addItem(self, item):
         self.item.append(item)

@@ -1,4 +1,4 @@
-from tkinter import Frame
+from tkinter import Frame, X, Y
 from inputs import InputBox
 
 ITEM_HEIGHT = .09
@@ -10,18 +10,21 @@ BG = "Grey"
 class Item_Desc(Frame):
 
     def __init__(self, master, item):
-        Frame.__init__(self, master, bg=BG)
+        Frame.__init__(self, master, bg=BG, height=75)
         self.item = item
         #add in inputs
         self.name = InputBox(self, type="Word")
         self.quantity = InputBox(self)
         self.price = InputBox(self)
-        # need to attach even handlers as well:/
+        #place entry boxs
+        self.name.place(relx=.001, rely=.05, relwidth=.62, relheight=.90)
+        self.quantity.place(relx=.63, rely=.05, relwidth=.20, relheight=.9)
+        self.price.place(relx=.84, rely=.05, relwidth=.1599, relheight=.9)
 
-        self.name.place(relx=.001, rely=.05, relwidth=.64, relheight=.90)
 
 
+    def addToView(self):
+        self.pack(fill=X)
 
-
-    def addToView(self, rely):
-        self.place(relx=PADDINGX, rely=rely, relheight=ITEM_HEIGHT, relwidth=ITEM_WIDTH)
+    def getName(self):
+        return self.name.input_box.get()

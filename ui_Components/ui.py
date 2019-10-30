@@ -32,10 +32,6 @@ class GUI:
         self.items = informationStruct.InformationStruct()
 
         # for test purposes
-        self.items.addItem(informationStruct.Item("name", 123, 1))
-        self.items.addItem(informationStruct.Item("name", 123, 1))
-        self.items.addItem(informationStruct.Item("name", 123, 1))
-        self.items.addItem(informationStruct.Item("name", 123, 1))
         self.render_Items()
         #
         self.scroll_frame.place(relx=0.005, rely=0.08, relwidth=.990, relheight=.82)
@@ -96,9 +92,23 @@ class GUI:
 
         for index, item in enumerate(self.items.get_items()):
             item = item_desc.Item_Desc(self.scroll_frame.mailbox_frame, item)
-            rely = index*.1 + .01
-            print(rely)
-            item.addToView(rely=rely)
+            item.addToView()
+
+        if 'index' not in locals():
+            index = 0
+
+        test = Button(self.scroll_frame.mailbox_frame, text="ADD ANOTHER ITEM", command=self.addNewItem, height=1)
+
+        test.pack()
+        self.scroll_frame.set_inner_height(200*index + 50)
+
+
+    def addNewItem(self):
+        self.items.addItem( informationStruct.Item("", 0, 0))
+        self.render_Items()
+
+
+
 
 
 
