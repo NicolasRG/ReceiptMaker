@@ -1,5 +1,5 @@
 from tkinter import Tk, Label, Button, LEFT, Frame, X, Y, BOTTOM, BOTH, Canvas, Scrollbar
-from ui_Components import inputs, scroll_frame, item_desc
+import inputs, scroll_frame, item_desc
 from data_format import informationStruct
 
 
