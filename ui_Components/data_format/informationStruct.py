@@ -21,8 +21,14 @@ class Item:
         cost = self.getCost()
         return f"${cost:.2f}"
 
-    def changeAmount(self, newAmount):
-        self.amount = newAmount
+    def set_name(self, name):
+        self.name = name
+    
+    def set_price(self, price):
+        self.price = float(price)
+
+    def set_amount(self, amount):
+        self.amount = float(amount)
 
 
 class InformationStruct:
@@ -47,7 +53,7 @@ class InformationStruct:
         return self.items
 
     def setTax(self, tax):
-        self.tax = tax;
+        self.tax = tax
 
     def getTotal(self):
         total = 0

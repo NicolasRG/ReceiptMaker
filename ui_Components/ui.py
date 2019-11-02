@@ -110,6 +110,7 @@ class GUI:
 
         for index, item in enumerate(self.items.get_items()):
             item = item_desc.Item_Desc(self.scroll_frame.mailbox_frame, item)
+            #todo fill in the actual info 
             item.addToView()
 
         if 'index' not in locals():
@@ -147,7 +148,8 @@ class GUI:
 
 
     def getTotal(self):
-        print("get total")
+        print(str(self.items))
+
 
 
 
