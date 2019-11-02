@@ -3,14 +3,14 @@ from tkinter import Frame, Scrollbar, Canvas, RIGHT, LEFT, Y, X, BOTH, NW
 
 class scrollFrame(Frame):
     def __init__(self, master):
-        super().__init__(master, bg="Green")
+        super().__init__(master, bg="Grey")
         frame = Frame(self)
         frame.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
 
         self.canvas = Canvas(frame, bg='pink')
         self.canvas.pack(side=RIGHT, fill=BOTH, expand=True)
 
-        self.mailbox_frame = Frame(self.canvas, bg='purple')
+        self.mailbox_frame = Frame(self.canvas, bg='white')
 
         self.canvas_frame = self.canvas.create_window((0, 0),
                                                       window=self.mailbox_frame, anchor=NW)
@@ -46,9 +46,4 @@ class scrollFrame(Frame):
             self.canvas.itemconfig(self.canvas_frame,
                                    height=self.inner_height)
 
-    def addItem(self, item):
-        self.item.append(item)
-        print("Added Item : " + str(item))
-
-    def delteItem(self, item):
-        list.remove(item)
+  

@@ -13,9 +13,10 @@ class InputBox(Frame):
         self.input_box.place(relx=0.0, rely=0.0, relwidth=1, relheight=1)
 
     def verify_input(self, inp):
+
         if self.type == "Word":
             return True
-        if inp.isnumeric():
+        if inp.isnumeric() or inp == "":
             return True
         print(inp + " is not a number")
         return False

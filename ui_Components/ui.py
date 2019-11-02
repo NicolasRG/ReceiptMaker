@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Button, LEFT, Frame, X, Y, BOTTOM, BOTH, Canvas, Scrollbar
+from tkinter import Tk, Label, Button, LEFT, Frame, X, Y, BOTTOM, BOTH, Canvas, Scrollbar, StringVar
 import inputs, scroll_frame, item_desc
 from data_format import informationStruct
 
@@ -8,6 +8,12 @@ class GUI:
     def __init__(self, master):
         HEADER_COLOR = "Black"
         CONTENTS_COLOR = "Grey"
+        TOTALS_COLOR = "Black"
+
+        self.tax = StringVar()
+        self.tax.set("Tax :  7.00")
+        self.total = StringVar()
+        self.total.set("$0.00")
 
         self.master = master
         master.title("A Simple App")
@@ -33,8 +39,17 @@ class GUI:
 
         # for test purposes
         self.render_Items()
-        #
+        
+        #render entire scroll frame
         self.scroll_frame.place(relx=0.005, rely=0.08, relwidth=.990, relheight=.82)
+
+        #create frame for totals
+        self.total_frame = Frame(self.contents, bg=TOTALS_COLOR)
+        self.total_button = Button(self.total_frame, command=self.getTotal, text="Create Totals")
+        self.total_labels_frame = Frame(self.total_frame, bg="grey")
+        self.total_tax_label  = Label(self.total_labels_frame, bg="white",textvariable=self.tax)
+        self.total_overall_total_label = Label(self.total_labels_frame, bg ="white", textvariable=self.total)
+        self.createTotal_Frame()
 
 
     def config_header(self):
@@ -52,6 +67,7 @@ class GUI:
         ui_title = Label(self.header, text=TITLE, fg=FOREGROUND, bg=BACKGROUND, font=(FONT, FONT_SIZE))
         ui_title.place(rely=.25, relwidth=.99)
 
+
     def config_contents(self):
         WIDTH = .99
         HEIGHT = .85
@@ -59,6 +75,7 @@ class GUI:
         PADDINGY = PADDINGX + .1
 
         self.contents.place(relx=PADDINGX, rely=PADDINGY, relheight=HEIGHT, relwidth=WIDTH)
+
 
     def config_item_title(self):
         WIDTH = .99
@@ -86,6 +103,7 @@ class GUI:
         item_cost.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX + .605 + SMALL_WIDTH + ITEM_PADDINGX,
                         relwidth=SMALL_WIDTH, relheight=ITEM_HEIGHT)
 
+
     def render_Items(self):
         for child in self.scroll_frame.mailbox_frame.winfo_children():
             child.destroy()
@@ -100,14 +118,36 @@ class GUI:
         test = Button(self.scroll_frame.mailbox_frame, text="ADD ANOTHER ITEM", command=self.addNewItem, height=1)
 
         test.pack()
-        self.scroll_frame.set_inner_height(200*index + 50)
+        self.scroll_frame.set_inner_height(100*index + 20)
 
 
     def addNewItem(self):
         self.items.addItem( informationStruct.Item("", 0, 0))
         self.render_Items()
+    
+    def removeItem(self):
+        #Todo 
+        return None
+
+    def createTotal_Frame(self):
+        rely =.9
+        relx =.005
+        height = .09
+        width = .99
+
+        self.total_frame.place(relx=relx, rely=rely, relheight=height, relwidth=width)
+        
+        #create button to print total
+        self.total_button.place(relx=.005, rely=.1, relheight=.8, relwidth=.235)
+
+        #create labels
+        self.total_labels_frame.place(relx=.25, rely=.1, relheight=.8, relwidth=.745)
+        self.total_tax_label.place(relx=.005, rely=.05, relheight=.9, relwidth=.345)
+        self.total_overall_total_label.place(relx=.355, rely=.05, relheight=.9, relwidth=.645)
 
 
+    def getTotal(self):
+        print("get total")
 
 
 

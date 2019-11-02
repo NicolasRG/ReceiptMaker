@@ -28,3 +28,9 @@ class Item_Desc(Frame):
 
     def getName(self):
         return self.name.input_box.get()
+
+    def getQauntity(self):
+        return self.quantity.input_box.get()
+    
+    def getPrice(self):
+        return self.price.input_box.get()
