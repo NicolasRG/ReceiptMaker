@@ -109,7 +109,7 @@ class GUI:
             child.destroy()
 
         for index, item in enumerate(self.items.get_items()):
-            item = item_desc.Item_Desc(self.scroll_frame.mailbox_frame, item)
+            item = item_desc.Item_Desc(self.scroll_frame.mailbox_frame, item, self.removeItem)
             #todo fill in the actual info 
             item.addToView()
 
@@ -126,9 +126,9 @@ class GUI:
         self.items.addItem( informationStruct.Item("", 0, 0))
         self.render_Items()
     
-    def removeItem(self):
-        #Todo 
-        return None
+    def removeItem(self, item):
+        self.items.removeItem(item)
+        self.render_Items()
 
     def createTotal_Frame(self):
         rely =.9
@@ -150,6 +150,7 @@ class GUI:
     def getTotal(self):
         print(str(self.items))
 
+        
 
 
 

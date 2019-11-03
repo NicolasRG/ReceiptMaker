@@ -67,3 +67,6 @@ class InformationStruct:
 
     def getLength(self):
         return len(self.items)
+
+    def removeItem(self, item):
+        self.items.remove(item)

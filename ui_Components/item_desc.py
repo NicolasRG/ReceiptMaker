@@ -1,4 +1,4 @@
-from tkinter import Frame, X, Y
+from tkinter import Frame, X, Y, Button
 from inputs import InputBox
 
 ITEM_HEIGHT = .09
@@ -9,15 +9,18 @@ BG = "Grey"
 
 class Item_Desc(Frame):
 
-    def __init__(self, master, item):
+    def __init__(self, master, item, removeItem):
         Frame.__init__(self, master, bg=BG, height=75)
         self.item = item
+        self.removeItem = removeItem
         #add in inputs
+        self.delete_button = Button(self, text="X", command=self.deleteMe)
         self.name = InputBox(self, type="Word")
         self.quantity = InputBox(self)
         self.price = InputBox(self)
         #place entry boxs
-        self.name.place(relx=.001, rely=.05, relwidth=.62, relheight=.90)
+        self.delete_button.place(relx=.001, rely=.05, relwidth=.10, relheight=.90)
+        self.name.place(relx=.105, rely=.05, relwidth=.47, relheight=.90)
         self.quantity.place(relx=.63, rely=.05, relwidth=.20, relheight=.9)
         self.price.place(relx=.84, rely=.05, relwidth=.1599, relheight=.9)
         #register event listeners
@@ -49,3 +52,7 @@ class Item_Desc(Frame):
     
     def getPrice(self):
         return self.price.input_box.get()
+    
+    def deleteMe(self):
+        self.removeItem(self.item)
+        print("delte me" + str(self))
