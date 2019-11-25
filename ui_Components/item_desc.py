@@ -23,7 +23,8 @@ class Item_Desc(Frame):
         self.name.place(relx=.105, rely=.05, relwidth=.47, relheight=.90)
         self.quantity.place(relx=.63, rely=.05, relwidth=.20, relheight=.9)
         self.price.place(relx=.84, rely=.05, relwidth=.1599, relheight=.9)
-        #register event listeners
+        #register event listeners, might just change these to add to item instead or 
+        # recall get on the total button 
         self.name.bind("<FocusOut>", self.onExitName)
         self.quantity.bind("<FocusOut>", self.onExitQuantity)
         self.price.bind("<FocusOut>", self.onExitPrice)
@@ -49,7 +50,12 @@ class Item_Desc(Frame):
 
     def getQauntity(self):
         return self.quantity.input_box.get()
-    
+
+    def fill(self):
+        self.name.setStringVar(self.item.get_name())
+        self.price.setStringVar(self.item.get_price())
+        self.quantity.setStringVar(self.item.get_amount()) 
+
     def getPrice(self):
         return self.price.input_box.get()
     

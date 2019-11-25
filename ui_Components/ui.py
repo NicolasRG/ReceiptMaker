@@ -93,8 +93,11 @@ class GUI:
         SMALL_WIDTH = .19
         TEXT = "Item No/ Item Name"
 
+        item_delete_title = Label(self.item_title, text="Delete")
+        item_delete_title.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX, relwidth=.10, relheight=ITEM_HEIGHT)
+
         item_name = Label(self.item_title, text=TEXT)
-        item_name.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX, relwidth=LARGE_WIDTH, relheight=ITEM_HEIGHT)
+        item_name.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX+.11, relwidth=LARGE_WIDTH-.10, relheight=ITEM_HEIGHT)
 
         item_quantity = Label(self.item_title, text="Quantity")
         item_quantity.place(rely=ITEM_PADDINGY, relx=ITEM_PADDINGX + .605, relwidth=SMALL_WIDTH, relheight=ITEM_HEIGHT)
@@ -112,14 +115,17 @@ class GUI:
             item = item_desc.Item_Desc(self.scroll_frame.mailbox_frame, item, self.removeItem)
             #todo fill in the actual info 
             item.addToView()
+            item.fill()
 
         if 'index' not in locals():
             index = 0
 
+        self.scroll_frame.set_inner_height(100*index + 20)
+        
         test = Button(self.scroll_frame.mailbox_frame, text="ADD ANOTHER ITEM", command=self.addNewItem, height=1)
 
         test.pack()
-        self.scroll_frame.set_inner_height(100*index + 20)
+        
 
 
     def addNewItem(self):

@@ -29,6 +29,15 @@ class Item:
 
     def set_amount(self, amount):
         self.amount = float(amount)
+    
+    def get_price(self):
+        return self.price
+
+    def get_name(self):
+        return self.name
+
+    def get_amount(self):
+        return self.amount
 
 
 class InformationStruct:
