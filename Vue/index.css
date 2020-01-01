@@ -1,0 +1,19 @@
+body{
+    background-color: grey;
+    text-align: center;
+}
+
+
+
+#Contatiner{
+    width: 100%;
+}
+
+
+
+#Title{
+    color: purple;
+    font-family: 'Verdana', 'Geneva', 'sans-serif';
+    font-size: 32px;
+    display: inline-block;
+}
