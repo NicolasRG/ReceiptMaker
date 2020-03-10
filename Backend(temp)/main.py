@@ -5,10 +5,10 @@ from datetime import datetime
 from reportlab.platypus import Image
 
 # test information
-tomato = Item("tomato", 1.00, 4)
-carrots = Item("carrots", 3.00, 3)
+tomato = informationStruct.Item("tomato", 1.00, 4)
+carrots = informationStruct.Item("carrots", 3.00, 3)
 
-receipt_data = InformationStruct([tomato, carrots])
+receipt_data = informationStruct.InformationStruct([tomato, carrots])
 # setup constants
 centerX = 250
 total_width = 500
@@ -25,7 +25,7 @@ logo_x = margins
 logo_y = total_height - margins - logo_height
 
 # keep track of current line height
-line_tracker = lineTracker(logo_y, line_spacing)
+line_tracker = lineTracker.lineTracker(logo_y, line_spacing)
 
 # Setup canvas , need to traverse data to calculate how high it needs to be || WILL NEED TO BE MOVED
 c = canvas.Canvas("Tet.pdf")

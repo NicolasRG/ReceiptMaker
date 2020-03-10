@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header> </Header>
-    <EntryContainer v-bind:entries = "this.entries" 
+    <EntryContainer :entries = "this.entries" 
       v-on:del-entry = "this.deleteEntry" 
       v-on:add-entry = "this.addEntry"
       v-on:change-price = "this.onEntryPriceChange"
@@ -26,11 +26,11 @@ export default {
     Footer},
   data() {
     return {
-      entries : []
+      entries : [] 
     }
   },
   methods:{
-    
+
     addEntry(name, price , quantity){
       this.entries.push(new Reciept_entry(name, price,quantity));
     },
@@ -60,7 +60,11 @@ export default {
       });
       entry.quantity = quantity;
     
-    }
+    },
+    /*getPrices(){
+      
+    },*/
+
   },
    created(){
      /* eslint-disable no-console */

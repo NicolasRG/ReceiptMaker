@@ -15,6 +15,10 @@ class Reciept_entry{
 
     setQuantity = (quantity) => this.quantity = quantity;
 
+    setItem = (item)=>{
+        this.item = item;
+    }
+
     calculate = ()=>{
         return (this.quantity*this.price);
     }
