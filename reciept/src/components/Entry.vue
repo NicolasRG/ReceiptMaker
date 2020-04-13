@@ -39,6 +39,7 @@ export default {
         onQuantityChange(e){
             console.log(e.target.value);
             this.entry.setQuantity(e.target.value);
+            this.$emit('change-item');
         },
         onPriceChange(e){
             const price = e.target.value;
@@ -58,6 +59,7 @@ export default {
                 
                 this.entry.setPrice(e.target.value);
                 this.price = e.target.value;
+                this.$emit('change-item');
             }
     }
 

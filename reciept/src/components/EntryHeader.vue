@@ -1,5 +1,8 @@
 <template>
     <div id="container">
+        <div id="delete"> 
+            Delete
+        </div>
         <div>
             Item
         </div>
@@ -27,6 +30,11 @@ export default {
     justify-content: space-around;
     background-color: white;
     border: black 1px solid;
+}
+
+#delete{
+        max-width: 100px;
+        left:0px;
 }
 
 

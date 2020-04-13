@@ -4,11 +4,12 @@
         <div v-for="entry in entries" v-bind:key="entry.id"> 
             <Entry v-bind:entry = "entry"
                 v-on:change-price="$emit('change-price')"
-                v-on:del-entry="$emit('del-entry', entry.id)"> 
+                v-on:del-entry="$emit('del-entry', entry.id)"
+                v-on:change-item="$emit('change-item')"> 
             </Entry>    
         </div>
-        <AddEntryButton v-on:add-entry="$emit('add-entry')"></AddEntryButton>
-        <EntryFooter> </EntryFooter>
+        <EntryFooter v-on:add-entry="$emit('add-entry')"> 
+        </EntryFooter>
     </div>
 </template>>
 
@@ -16,8 +17,6 @@
 import EntryHeader from './EntryHeader.vue';
 import EntryFooter from './EntryFooter.vue';
 import Entry from './Entry.vue';
-import AddEntryButton from './AddEntryButton.vue';
-//import Reciept_entry from './Data_Classes/reciept_entry.js'
 
 export default {
     name: "EntryContainer",
@@ -25,7 +24,6 @@ export default {
         EntryHeader,
         EntryFooter,
         Entry,
-        AddEntryButton
     },
     props : {
         entries:{
