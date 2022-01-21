@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
     #FooterTotal {
-        background-color: black;
+        margin: 5px;
         color: white;
     }
 
@@ -34,6 +34,15 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+    }
+
+    button{
+        border-radius: 10px;
+        border : none;
+        font-size: 15px;
+        background-color: rgb(71, 71, 71);
+        width : 25%;
+        color: rgb(214, 214, 214);
     }
 
 </style>

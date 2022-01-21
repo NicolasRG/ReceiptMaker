@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="button-container">
          <AddEntryButton v-on:add-entry="$emit('add-entry')"></AddEntryButton>
     </div>
 </template>
@@ -16,5 +16,7 @@ export default {
 </script>
 
 <style  scoped>
-
+    .button-container{
+        margin: 5px;
+    }
 </style>

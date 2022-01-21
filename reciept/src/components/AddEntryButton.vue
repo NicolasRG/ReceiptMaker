@@ -18,5 +18,19 @@ export default {
 </script>
 
 <style scoped>
+    button{
+        border-radius: 10px;
+        border : none;
+        font-size: 15px;
+        background-color: rgb(71, 71, 71);
+        width : 33%;
+        color: rgb(214, 214, 214);
+    }
+
+    button:hover{
+        background-color: rgb(15, 64, 97);
+        color: white;
+    }
+
 
 </style>

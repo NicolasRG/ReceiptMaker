@@ -3,13 +3,13 @@
         <div id="delete"> 
             Delete
         </div>
-        <div>
+        <div class="Field">
             Item
         </div>
-        <div>
+        <div class="Field">
             Qauntity
         </div>
-        <div>
+        <div class="Field">
             Price
         </div>
     </div>
@@ -27,14 +27,20 @@ export default {
     display : flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
-    background-color: white;
-    border: black 1px solid;
+    padding-left: 10px;
+    border-bottom: white 1px solid ;
 }
 
 #delete{
-        max-width: 100px;
+        width: 50px;
+        margin-left: 5px;
         left:0px;
+}
+
+.Field{
+    margin-left: 40px;
+    width: 20%;
+    text-align: center;
 }
 
 

@@ -50,10 +50,13 @@ export default {
 
 #Container{
     position: relative;
-    background-color: grey;
+    background-color: rgb(60, 139, 192);
+    border: rgb(24, 81, 122) 2px solid ;
     flex-grow: auto;
     margin:10px;
+    margin-bottom: 0px;
     height: 100%;
+    border-radius: 5px;
 }
 
 

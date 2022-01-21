@@ -10,7 +10,8 @@
      
     > </EntryContainer>
     <Footer  v-on:submit-entries = "this.submitEntries" 
-        :total = "this.total"> </Footer>
+        :total = "this.total"
+        :tax = "this.tax"> </Footer>
   </div>
 </template>
 
@@ -32,6 +33,7 @@ export default {
     return {
       entries : [],
       total : 0,
+      tax : .07//defualt set to .07
     }
   },
   methods:{
@@ -43,11 +45,6 @@ export default {
       this.entries = this.entries.filter( entry => entry.id !== id);
     },
     onEntryItemChange(){
-      /*
-      let entry = this.entries.find((ele)=>{
-        return ele.id == id ;
-      });
-      entry.item = item;*/
       
       /* eslint-disable no-console */
       let price = 0;
@@ -57,7 +54,7 @@ export default {
       this.entries.forEach(element => {
         price = price + (element.quantity*element.price);      
       });
-      this.total = price;
+      this.total = price + (this.tax * price);
 
     },
     onEntryPriceChange(id, price){
@@ -80,12 +77,11 @@ export default {
       /* eslint-disable no-console */
       const json_items = JSON.stringify(this.entries);
       console.log(json_items);
-      alert(this.total);
       axios({
         method: 'post',
         url: 'http://localhost/spawnPython',
         headers: {'Content-Type': 'application/json'},
-        data: {"items": json_items} 
+        data: {"items": json_items, "tax" : this.tax} 
       }).then(res =>{
         console.log(res);
         //created way to print the pdf
@@ -114,6 +110,8 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
+  background-color: rgb(15, 64, 97); 
+  color: rgb(214, 214, 214);
 }
 
 </style>

@@ -2,6 +2,9 @@
     <div id="Footer"> 
         <footer-total v-on:submit-entries ="$emit('submit-entries')"
         :total = "total"> </footer-total>
+        <div>
+            Tax = {{tax}}
+        </div>
     </div>
 </template>
 
@@ -16,6 +19,10 @@ export default {
         total:{
             type : Number,
             required : true,
+        },
+        tax:{
+            type : Number,
+            required : true,
         }
     },
 }
@@ -24,7 +31,12 @@ export default {
 <style scoped>
     #Footer{
         flex: none;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+        margin-top : 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        background-color: rgb(60, 139, 192);
     }
 </style>
