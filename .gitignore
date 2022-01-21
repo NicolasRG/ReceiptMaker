@@ -1,6 +1,13 @@
 .idea
 .idea/
 
+#npm packages
+reciept/node_modules
+reciept/node_modules/
+
+node_backend/node_modules
+node_backend/node_modules/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
